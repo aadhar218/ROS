@@ -8,7 +8,7 @@ roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
 ```
 ### to run the controller:
  ```
-rosrun ROS my_controller.py
+rosrun PID_Controller my_controller.py
 ```
  The goal coordinates can be inputted.</br>
  ## Obstacle Detection
