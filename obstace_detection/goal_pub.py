@@ -10,7 +10,7 @@ import numpy as np
 
 class goal_control:
     def __init__(self):
-        pass
+        self.kp=0.2
     def newOdom(self,msg):
         global x,y,theta
         x=msg.pose.pose.position.x
@@ -38,11 +38,11 @@ class goal_control:
             angle=atan2(goal.y-y,goal.x-x)
             dis=self.get_distance(x,y,theta,goal)
             rospy.loginfo(dis)
-            s=angle-theta
+            s=self.kp*(angle-theta)
             twist.angular.z=0.2
             twist.linear.x=0
             if(s<0.1):
-                twist.linear.x=0.4
+                twist.linear.x=0.2
                 twist.angular.z=0
             if(dis<0.1):
                 goal=None
